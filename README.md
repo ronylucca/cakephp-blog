@@ -1,3 +1,7 @@
+# cakephp-blog
+A simple project using php 7.0, cakephp and mysql
+
+
 # CakePHP Application Skeleton
 
 [![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
