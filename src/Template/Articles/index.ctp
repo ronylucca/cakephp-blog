@@ -1,11 +1,13 @@
 <!-- File: src/Template/Articles/index.ctp -->
 
 <h1>Blog articles</h1>
+<?= $this->Html->link('Adicionar artigo', ['action' => 'add']) ?>
 <table>
     <tr>
         <th>Id</th>
-        <th>Title</th>
-        <th>Created</th>
+        <th>Título</th>
+        <th>Criado</th>
+        <th>Ações</th>
     </tr>
 
     <!-- Aqui é onde iremos iterar nosso objeto de solicitação $articles, exibindo informações de artigos  -->
@@ -18,6 +20,14 @@
         </td>
         <td>
             <?= $article->created->format(DATE_RFC850) ?>
+        </td>
+        <td>
+            <?= $this->Form->postLink(
+                'Deletar',
+                ['action' => 'delete', $article->id],
+                ['confirm' => 'Tem certeza?'])
+            ?> | 
+            <?= $this->Html->link('Edit', ['action' => 'edit', $article->id]) ?>
         </td>
     </tr>
     <?php endforeach; ?>

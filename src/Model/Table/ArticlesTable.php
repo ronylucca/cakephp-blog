@@ -48,16 +48,12 @@ class ArticlesTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('id')
-            ->allowEmpty('id', 'create');
-
-        $validator
             ->scalar('title')
-            ->allowEmpty('title');
+            ->notEmpty('title');
 
         $validator
             ->scalar('body')
-            ->allowEmpty('body');
+            ->notEmpty('body');
 
         return $validator;
     }
