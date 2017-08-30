@@ -29,9 +29,10 @@ class ArticlesController extends AppController
     public function index()
     {
         $articles = $this->paginate($this->Articles);
-
+        $category = $this->Articles->Categories;
         $this->set(compact('articles'));
         $this->set('_serialize', ['articles']);
+        
     }
 
     /**
@@ -56,21 +57,24 @@ class ArticlesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
-        $article = $this->Articles->newEntity();
-        if ($this->request->is('post')) {
-            $article = $this->Articles->patchEntity($article, $this->request->getData());
-            if ($this->Articles->save($article)) {
-                $this->Flash->success(__('Artigo publicado com sucesso.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('O artigo não pode ser publicado. Tente novamente.'));
-        }
-        $this->set(compact('article'));
-        $this->set('_serialize', ['article']);
-    }
+     public function add()
+     {
+         $article = $this->Articles->newEntity();
+         if ($this->request->is('post')) {
+             $article = $this->Articles->patchEntity($article, $this->request->getData());
+             if ($this->Articles->save($article)) {
+                 $this->Flash->success(__('Your article has been saved.'));
+                 return $this->redirect(['action' => 'index']);
+             }
+             $this->Flash->error(__('Unable to add your article.'));
+         }
+         $this->set('article', $article);
+ 
+         // Just added the categories list to be able to choose
+         // one category for an article
+         $categories = $this->Articles->Categories->find('treeList');
+         $this->set(compact('categories'));
+     }
 
     /**
      * Edit method

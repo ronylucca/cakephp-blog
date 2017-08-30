@@ -7,6 +7,7 @@
         <th>Id</th>
         <th>Título</th>
         <th>Criado</th>
+        <th>Categoria</th>
         <th>Ações</th>
     </tr>
 
@@ -20,6 +21,9 @@
         </td>
         <td>
             <?= $article->created->format(DATE_RFC850) ?>
+        </td>
+        <td>
+            <?= $article->category_id ?>
         </td>
         <td>
             <?= $this->Form->postLink(
