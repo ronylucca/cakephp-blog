@@ -8,7 +8,7 @@
         <th>Created</th>
     </tr>
 
-    <!-- Aqui é onde iremos iterar nosso objeto de solicitação $articles, exibindo informações de artigos -->
+    <!-- Aqui é onde iremos iterar nosso objeto de solicitação $articles, exibindo informações de artigos  -->
 
     <?php foreach ($articles as $article): ?>
     <tr>
